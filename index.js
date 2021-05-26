@@ -6,16 +6,18 @@ const arrDiff = (arr1, arr2) => ({
 const getEmailItems = (email_text) =>
   email_text
     .split("\n")
-    .map((s) => s.replace(",", ""))
+    .map((s) => s.replaceAll(",", ""))
     .map((s) => s.trim())
-    .map((s) => s.replace("and", ""))
+    .map((s) => s.replaceAll("and", ""))
+    .map((s) => s.toLowerCase())
     .filter(Boolean);
 
 const getSiteItems = (site_text) =>
   site_text
     .split(",")
-    .map((s) => s.replace("and", ""))
+    .map((s) => s.replaceAll("and", ""))
     .map((s) => s.trim())
+    .map((s) => s.toLowerCase())
     .filter(Boolean);
 
 const getDiffs = (email_text, site_text) =>
